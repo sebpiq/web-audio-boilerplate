@@ -32,4 +32,4 @@ Test what audio formats are supported in the current browser. Calls `done(err, r
 Demo
 -----
 
-There is a simple demo [here](https://github.com/sebpiq/web-audio-boilerplate/tree/master/demo.html). You can see the demo in action [here](sebpiq.github.io/web-audio-boilerplate/demo.html). 
+There is a simple demo [here](https://github.com/sebpiq/web-audio-boilerplate/tree/master/demo.html). You can see the demo in action [here](http://sebpiq.github.io/web-audio-boilerplate/demo.html). 
