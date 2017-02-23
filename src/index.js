@@ -1,5 +1,5 @@
-// Test for support of sound formats. Returns a list :
-// `['format1', 'format2', ...]`. Formats tested are 'ogg', 'mp3' and 'wav'.
+// Test for support of sound formats. Calls `done(err, results)` where result is an object :
+// `{wav: <trueOrFalse>, ogg: <trueOrFalse>, mp3: <trueOrFalse>}`
 exports.getSupportedFormats = function(audioContext, done) {
   var results = {}
   var formatList = [
@@ -34,10 +34,11 @@ exports.getSupportedFormats = function(audioContext, done) {
       decodedCallback(format[0], err || new Error('decoding error'), null)
     })
   }
-
   nextFormat()
 }
 
+// When `elem` is clicked, `handler(err, audioContext)` is called with an unmuted 
+// instance of `AudioContext`. This is really necessary only on iOS.
 exports.getAudioContextOnClick = function(elem, handler) {
   // starting in iOS9, audio will only be unmuted if the context is created on "touchend".
   var is_iOS = /iPad|iPhone|iPod/.test(navigator.platform)

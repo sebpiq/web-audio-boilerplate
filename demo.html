@@ -41,8 +41,11 @@
 
     <script type="text/javascript">
     var audioContext
+    var startButton = document.querySelector('#start')
+    var playButton = document.querySelector('#play')
 
     webAudioBoilerplate.getSupportedFormats(new AudioContext, function(err, formats) {
+      // Display tested formats and their support
       var format, supported, elem
       for (format in formats) {
         supported = formats[format]
@@ -53,13 +56,14 @@
       }
     })
 
-    var startButton = document.querySelector('#start')
     webAudioBoilerplate.getAudioContextOnClick(startButton, function(err, ctx) {
-      startButton.setAttribute('style', 'visibility:hidden;')
-      document.querySelector('#play').setAttribute('style', 'display:block;')
+      // Hide "start" button, show "play" button, and save the created audio context
       audioContext = ctx
+      startButton.setAttribute('style', 'visibility:hidden;')
+      playButton.setAttribute('style', 'display:block;')
     })
 
+    // When clicking on "play" button, plays a "blip"
     document.querySelector('#play').addEventListener('click', function() {
       var osc = audioContext.createOscillator()
       var env = audioContext.createGain()
