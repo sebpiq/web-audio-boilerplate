@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/sebpiq/web-audio-boilerplate/issues"
   },
-  "homepage": "https://github.com/sebpiq/web-audio-boilerplate#readme"
+  "homepage": "https://github.com/sebpiq/web-audio-boilerplate#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-mustache": "^2.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.1",
+    "gulp-wrap": "^0.13.0",
+    "run-sequence": "^1.2.2"
+  }
 }

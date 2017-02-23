@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>web audio boilerplate</title>
+    <script type="text/javascript" src="dist/web-audio-boilerplate.js"></script>
+    <style type="text/css">
+    
+    body {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    button {
+      width: 100%;
+      font-size: 150%;
+      padding: 1em;
+    }
+
+    #supportedFormats>div {
+      background-color: red;
+    }
+    #supportedFormats>div.supported {
+      background-color: green;
+    }
+
+    #play {
+      display: none;
+    }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="supportedFormats">
+    </div>
+    <button id="start">Enable web audio</button>
+    <button id="play">play sound</button>
+
+    <script type="text/javascript">
+    var audioContext
+
+    webAudioBoilerplate.getSupportedFormats(new AudioContext, function(err, formats) {
+      var format, supported, elem
+      for (format in formats) {
+        supported = formats[format]
+        elem = document.createElement('div')
+        elem.innerHTML = '<span>' + format + '</span> : ' + '<span>' + supported + '</span>'
+        if (supported) elem.setAttribute('class', 'supported')
+        document.querySelector('#supportedFormats').appendChild(elem)
+      }
+    })
+
+    var startButton = document.querySelector('#start')
+    webAudioBoilerplate.getAudioContextOnClick(startButton, function(err, ctx) {
+      startButton.setAttribute('style', 'visibility:hidden;')
+      document.querySelector('#play').setAttribute('style', 'display:block;')
+      audioContext = ctx
+    })
+
+    document.querySelector('#play').addEventListener('click', function() {
+      var osc = audioContext.createOscillator()
+      var env = audioContext.createGain()
+      osc.connect(env)
+      env.connect(audioContext.destination)
+      osc.start(audioContext.currentTime)
+      osc.stop(audioContext.currentTime + 3)
+      env.gain.cancelScheduledValues(audioContext.currentTime)
+      env.gain.setValueAtTime(Math.max(0.000000001, env.gain.value), audioContext.currentTime)
+      env.gain.exponentialRampToValueAtTime(1, audioContext.currentTime + 0.01)
+      env.gain.exponentialRampToValueAtTime(0.000000001, audioContext.currentTime + 3)
+    }, true)
+
+    </script>
+  </body>
+</html>
