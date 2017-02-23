@@ -1,10 +1,7 @@
 Web Audio boilerplate
 ========================
 
-A couple of helpers necessary for cross-browser web audio projects :
-
-1. Testing audio format support
-2. Unmuting `AudioContext` on iOS
+A couple of helpers necessary for cross-browser web audio projects.
 
 **note** : in addition of this library, I recommend using @cwilso's [AudioContext-MonkeyPatch](https://github.com/cwilso/AudioContext-MonkeyPatch) for normalizing Web Audio API across browsers (prefix and method names). For convenience, it is already bound with the built version of the library.
 
