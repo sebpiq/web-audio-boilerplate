@@ -18,9 +18,13 @@ gulp.task('loadFormatFiles', function() {
   return gulp.src(srcPath)
     .pipe(rename(builtFileName))
     .pipe(mustache({
-      wavFile: JSON.stringify(fs.readFileSync('src/format-support-samples/sample.wav').toJSON().data),
-      mp3File: JSON.stringify(fs.readFileSync('src/format-support-samples/sample.mp3').toJSON().data),
-      oggFile: JSON.stringify(fs.readFileSync('src/format-support-samples/sample.ogg').toJSON().data)
+      aacFile: JSON.stringify(fs.readFileSync('src/format-support-samples/aac.m4a').toJSON().data),
+      flacFile: JSON.stringify(fs.readFileSync('src/format-support-samples/flac.flac').toJSON().data),
+      mp3File: JSON.stringify(fs.readFileSync('src/format-support-samples/mp3.mp3').toJSON().data),
+      oggFile: JSON.stringify(fs.readFileSync('src/format-support-samples/ogg.ogg').toJSON().data),
+      s16leFile: JSON.stringify(fs.readFileSync('src/format-support-samples/s16le.wav').toJSON().data),
+      s24leFile: JSON.stringify(fs.readFileSync('src/format-support-samples/s24le.wav').toJSON().data),
+      u8File: JSON.stringify(fs.readFileSync('src/format-support-samples/u8.wav').toJSON().data)
     }))
     .pipe(gulp.dest('.'))
 })

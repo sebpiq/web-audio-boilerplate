@@ -3,27 +3,33 @@
 exports.getSupportedFormats = function(audioContext, done) {
   var results = {}
   var formatList = [
-      ['wav', new Uint8Array({{ wavFile }})],
+      ['aac', new Uint8Array({{ aacFile }})],
+      ['flac', new Uint8Array({{ flacFile }})],
       ['mp3', new Uint8Array({{ mp3File }})],
-      ['ogg', new Uint8Array({{ oggFile }})]
+      ['ogg', new Uint8Array({{ oggFile }})],
+      ['s16le', new Uint8Array({{ s16leFile }})],
+      ['s24le', new Uint8Array({{ s24leFile }})],
+      ['u8', new Uint8Array({{ u8File }})]
     ]
   var format
 
   var decodedCallback = function(fileType, err, buffer) {
     var supported = true
 
-    // If no decoding error, we test that the buffer is decoded as expected
+    // If no decoding error we consider the format is supported
     if (err)
       supported = false 
-    else if (buffer.numberOfChannels !== 1 || Math.round(buffer.duration * 1000) !== 50)
-      supported = false
+    //else if (buffer.numberOfChannels !== 1 || Math.round(buffer.duration * 10000) / 100 !== 1)
+      //supported = false
     
     // Add format to `results` if supported, then move on to next format
     results[fileType] = supported
     if (formatList.length > 0)
       nextFormat()
-    else 
+    else {
+      results.wav = results.s16le
       done(null, results)
+    }
   }
 
   var nextFormat = function() {

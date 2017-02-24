@@ -21,7 +21,16 @@ API
 Test what audio formats are supported in the current browser. Calls `done(err, results)` where `result` is an object :
 
 ```javascript
-{wav: <trueOrFalse>, ogg: <trueOrFalse>, mp3: <trueOrFalse>}
+{
+  wav: <trueOrFalse>,     // Equivalent to s16le
+  ogg: <trueOrFalse>, 
+  mp3: <trueOrFalse>, 
+  aac: <trueOrFalse>, 
+  flac: <trueOrFalse>, 
+  s16le: <trueOrFalse>,   // wav PCM signed 16-bit little-endian
+  s24le: <trueOrFalse>,   // wav PCM signed 24-bit little-endian
+  u8: <trueOrFalse>       // wav PCM unsigned 8-bit
+}
 ```
 
 ### webAudioBoilerplate.getAudioContextOnClick(elem, handler)
