@@ -29,6 +29,7 @@ Test what audio formats are supported in the current browser. Calls `done(err, r
   flac: <trueOrFalse>, 
   s16le: <trueOrFalse>,   // wav PCM signed 16-bit little-endian
   s24le: <trueOrFalse>,   // wav PCM signed 24-bit little-endian
+  f32le: <trueOrFalse>,   // wav PCM 32-bit floating-point little-endian
   u8: <trueOrFalse>       // wav PCM unsigned 8-bit
 }
 ```

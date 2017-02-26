@@ -24,6 +24,7 @@ gulp.task('loadFormatFiles', function() {
       oggFile: JSON.stringify(fs.readFileSync('src/format-support-samples/ogg.ogg').toJSON().data),
       s16leFile: JSON.stringify(fs.readFileSync('src/format-support-samples/s16le.wav').toJSON().data),
       s24leFile: JSON.stringify(fs.readFileSync('src/format-support-samples/s24le.wav').toJSON().data),
+      f32leFile: JSON.stringify(fs.readFileSync('src/format-support-samples/f32le.wav').toJSON().data),
       u8File: JSON.stringify(fs.readFileSync('src/format-support-samples/u8.wav').toJSON().data)
     }))
     .pipe(gulp.dest('.'))

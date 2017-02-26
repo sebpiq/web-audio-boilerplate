@@ -9,6 +9,7 @@ exports.getSupportedFormats = function(audioContext, done) {
       ['ogg', new Uint8Array({{ oggFile }})],
       ['s16le', new Uint8Array({{ s16leFile }})],
       ['s24le', new Uint8Array({{ s24leFile }})],
+      ['f32le', new Uint8Array({{ f32leFile }})],
       ['u8', new Uint8Array({{ u8File }})]
     ]
   var format
